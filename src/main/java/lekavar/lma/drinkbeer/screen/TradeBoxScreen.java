@@ -50,7 +50,7 @@ public class TradeBoxScreen extends HandledScreen<ScreenHandler> {
         if (screenHandler.isCooling()) {
             drawContext.drawTexture(TRADE_BOX_GUI, x + 84, y + 25, 178, 38, 72, 36);
             String timeStr = convertTickToTime(screenHandler.getCoolingTime());
-            textRenderer.draw(timeStr, x+114,y+39,new Color(64, 64, 64, 255).getRGB(),false,positionMatrix,consumers, TextRenderer.TextLayerType.SEE_THROUGH, 0, LightmapTextureManager.MAX_LIGHT_COORDINATE);
+            drawContext.drawText(textRenderer,timeStr, x+114,y+39,new Color(64, 64, 64, 255).getRGB(),false);
         } else if (screenHandler.isTrading()) {
             if (isPointWithinBounds(157, 6, 13, 13, (double) mouseX, (double) mouseY)) {
                 drawContext.drawTexture(TRADE_BOX_GUI, x + 155, y + 4, 178, 19, 16, 16);
@@ -61,12 +61,12 @@ public class TradeBoxScreen extends HandledScreen<ScreenHandler> {
         if (!screenHandler.isCooling()) {
             Language language = Language.getInstance();
             String youStr = language.get("drinkbeer.resident.you");
-            textRenderer.draw(youStr, x+85,y+16,new Color(64, 64, 64, 255).getRGB(),false,positionMatrix,consumers, TextRenderer.TextLayerType.SEE_THROUGH, 0, LightmapTextureManager.MAX_LIGHT_COORDINATE);
+            drawContext.drawText(textRenderer,youStr, x+85,y+16,new Color(64, 64, 64, 255).getRGB(),false);
             String locationAndResidentStr =
                     language.get(TradeboxManager.getLocationTranslationKey(this.screenHandler.getLocationId()))
                             + "-" +
                             language.get(TradeboxManager.getResidentTranslationKey(this.screenHandler.getResidentId()));
-            textRenderer.draw(locationAndResidentStr, x+85,y+63,new Color(64, 64, 64, 255).getRGB(),false,positionMatrix,consumers, TextRenderer.TextLayerType.SEE_THROUGH, 0, LightmapTextureManager.MAX_LIGHT_COORDINATE);
+            drawContext.drawText(textRenderer,locationAndResidentStr, x+85,y+63,new Color(64, 64, 64, 255).getRGB(),false);
         }
     }
 

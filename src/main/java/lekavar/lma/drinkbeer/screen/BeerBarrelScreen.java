@@ -32,11 +32,7 @@ public class BeerBarrelScreen extends HandledScreen<ScreenHandler> {
         int y = (height - backgroundHeight) / 2;
         context.drawTexture(BEER_BARREL_GUI_BASIC, x, y, 0, 0, backgroundWidth, backgroundHeight);
         String str = screenHandler.propertyDelegate.get(3) == 1 ? convertTickToTime(screenHandler.getRemainingBrewingTime()) : convertTickToTime(screenHandler.getCurrentBrewingTime());
-        Matrix4f positionMatrix = context.getMatrices().peek().getPositionMatrix();
-        Tessellator tessellator = RenderSystem.renderThreadTesselator();
-        BufferBuilder buffer = tessellator.getBuffer();
-        VertexConsumerProvider.Immediate consumers = VertexConsumerProvider.immediate(buffer);
-        textRenderer.draw(str, x + 128 - str.length() / 2, y + 54,new Color(64, 64, 64, 255).getRGB(),false,positionMatrix,consumers, TextRenderer.TextLayerType.SEE_THROUGH, 0, LightmapTextureManager.MAX_LIGHT_COORDINATE);
+        context.drawText(textRenderer, str, x + 128 - str.length() / 2, y + 54,new Color(64, 64, 64, 255).getRGB(),false);
     }
 
     @Override

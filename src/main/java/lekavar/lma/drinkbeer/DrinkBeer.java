@@ -58,7 +58,7 @@ public class DrinkBeer implements ModInitializer {
             .build();
 
     public static final ItemGroup DRINK_BEER_GENERAL = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(DrinkBeer.BEER_MUG))
+            .icon(() -> new ItemStack(DrinkBeer.BEER_BARREL))
             .displayName(Text.translatable("itemGroup.drinkbeer.general"))
             .build();
 

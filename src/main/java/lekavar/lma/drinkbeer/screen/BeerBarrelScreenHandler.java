@@ -272,7 +272,8 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         return BeerRecipeManager.matchBeerRecipe(inputMaterialMap, player);
     }
 
-    public void close(PlayerEntity player) {
+    @Override
+    public void onClosed(PlayerEntity player) {
         super.onClosed(player);
         if (!player.getWorld().isClient) {
             player.getWorld().playSound(null, player.getBlockPos(), SoundEvents.BLOCK_BARREL_CLOSE, SoundCategory.BLOCKS, 1f, 1f);
