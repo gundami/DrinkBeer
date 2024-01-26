@@ -208,7 +208,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack transferSlot(PlayerEntity player, int invSlot) {
+    public ItemStack quickMove(PlayerEntity player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
         if (slot != null && slot.hasStack()) {
@@ -273,9 +273,9 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
     }
 
     public void close(PlayerEntity player) {
-        super.close(player);
-        if (!player.world.isClient) {
-            player.world.playSound(null, new BlockPos(player.getPos()), SoundEvents.BLOCK_BARREL_CLOSE, SoundCategory.BLOCKS, 1f, 1f);
+        super.onClosed(player);
+        if (!player.getWorld().isClient) {
+            player.getWorld().playSound(null, player.getBlockPos(), SoundEvents.BLOCK_BARREL_CLOSE, SoundCategory.BLOCKS, 1f, 1f);
         }
         if (this.isMaterialCompleted() && !isBrewing()) {
             setIsMaterialCompleted(false);
@@ -359,11 +359,11 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
     }
 
     private void playPouringSound(PlayerEntity player, ItemStack stack) {
-        if (!player.world.isClient) {
+        if (!player.getWorld().isClient) {
             if (stack.getItem().equals(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem())) {
-                player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_CHRISTMAS_EVENT, SoundCategory.BLOCKS, 0.6f, 1f);
+                player.getWorld().playSound(null, player.getBlockPos(), DrinkBeer.POURING_CHRISTMAS_EVENT, SoundCategory.BLOCKS, 0.6f, 1f);
             }
-            player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
+            player.getWorld().playSound(null, player.getBlockPos(), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
         }
     }
 

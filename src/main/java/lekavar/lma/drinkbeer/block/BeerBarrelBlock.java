@@ -47,7 +47,7 @@ public class BeerBarrelBlock extends BlockWithEntity implements BlockEntityProvi
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(HorizontalFacingBlock.FACING, ctx.getPlayerFacing());
+        return (BlockState) this.getDefaultState().with(HorizontalFacingBlock.FACING, ctx.getHorizontalPlayerFacing());
     }
 
     @Override

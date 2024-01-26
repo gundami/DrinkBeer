@@ -44,7 +44,7 @@ public class RecipeBoardPackageBlock extends HorizontalFacingBlock {
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerFacing());
+        return (BlockState) this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
     }
 
     @Override

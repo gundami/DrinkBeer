@@ -58,7 +58,7 @@ public class BartendingTableBlock extends BlockWithEntity implements BlockEntity
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(HorizontalFacingBlock.FACING, ctx.getPlayerFacing());
+        return (BlockState) this.getDefaultState().with(HorizontalFacingBlock.FACING, ctx.getHorizontalPlayerFacing());
     }
 
     @Override
@@ -72,7 +72,7 @@ public class BartendingTableBlock extends BlockWithEntity implements BlockEntity
         try {
             ItemStack mainHandStack = player.getMainHandStack();
             //Open screen when beer in main hand
-            if (!world.isClient && mainHandStack.getItem().getGroup() == DrinkBeer.DRINK_BEER) {
+            if (!world.isClient && DrinkBeer.DRINK_BEER.contains(mainHandStack)) {
                 world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1f, 1f);
                 NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
                if (screenHandlerFactory != null) {

@@ -23,7 +23,7 @@ public class DrunkFrostWalkerStatusEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (entity instanceof PlayerEntity) {
-            FrostWalkerEnchantment.freezeWater(entity, entity.world, new BlockPos(entity.getPos()), 1);
+            FrostWalkerEnchantment.freezeWater(entity, entity.getWorld(), entity.getBlockPos(), 1);
         }
     }
 

@@ -10,7 +10,6 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.particle.EmotionParticle;
@@ -39,10 +38,12 @@ public class DrinkBeerClient implements ClientModInitializer {
             System.out.println(e.getMessage());
         }
         //Particles
+        /*
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
             registry.register(new Identifier("drinkbeer", "particle/mixed_beer_default"));
             registry.register(new Identifier("drinkbeer", "particle/call_bell_tinkle_paw"));
         }));
+        */
         ParticleFactoryRegistry.getInstance().register(DrinkBeer.MIXED_BEER_DEFAULT, FlameParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(DrinkBeer.CALL_BELL_TINKLE_PAW, EmotionParticle.AngryVillagerFactory::new);
         /*Transparent texture*/

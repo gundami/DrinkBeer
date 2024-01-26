@@ -7,12 +7,12 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
-import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
+import net.minecraft.client.render.model.json.ModelTransformationMode;
 
 public class MixedBeerEntityRenderer implements BlockEntityRenderer<MixedBeerEntity> {
 
@@ -27,11 +27,11 @@ public class MixedBeerEntityRenderer implements BlockEntityRenderer<MixedBeerEnt
         //Move beer
         matrices.translate(0.5, 0.25, 0.5);
         //Rotate beer
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(getRandomAngleByPos(pos)));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(getRandomAngleByPos(pos)));
         //Get light at the beer block
         int lightAbove = WorldRenderer.getLightmapCoordinates(blockEntity.getWorld(), pos);
         //Render beer
-        MinecraftClient.getInstance().getItemRenderer().renderItem(beerStack, ModelTransformation.Mode.GROUND ,lightAbove, overlay,matrices,vertexConsumers,0);
+        MinecraftClient.getInstance().getItemRenderer().renderItem(beerStack, ModelTransformationMode.GROUND ,lightAbove, overlay,matrices,vertexConsumers,blockEntity.getWorld(),0);
 
         matrices.pop();
     }

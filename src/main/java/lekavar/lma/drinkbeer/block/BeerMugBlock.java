@@ -56,7 +56,7 @@ public class BeerMugBlock extends HorizontalFacingBlock {
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerFacing());
+        return (BlockState) this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
     }
 
     @Override
@@ -121,7 +121,7 @@ public class BeerMugBlock extends HorizontalFacingBlock {
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         Item item = world.getBlockState(pos.offset(Direction.DOWN, 1)).getBlock().asItem();
         try {
-            return !item.getGroup().equals(DrinkBeer.DRINK_BEER);
+            return !DrinkBeer.DRINK_BEER.contains(item.getDefaultStack());
         } catch (Exception e) {
             //System.out.println(e.getMessage());
             return !item.equals(Items.AIR);
@@ -132,7 +132,7 @@ public class BeerMugBlock extends HorizontalFacingBlock {
         return canPlaceAt(state, world, pos) ? super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom) : Blocks.AIR.getDefaultState();
     }
 
-    @Override
+    //@Override
     public PistonBehavior getPistonBehavior(BlockState state) {
         return PistonBehavior.DESTROY;
     }

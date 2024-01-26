@@ -26,7 +26,7 @@ public class RecipeBoardBlockItem extends BlockItem {
     }
 
     public RecipeBoardBlockItem(Block block) {
-        super(block, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1));
+        super(block, new Item.Settings().maxCount(1));
     }
 
     public void appendRecipeBoardTooltip(ItemStack stack, List<Text> tooltip) {
